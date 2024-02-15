@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <h1>Create a new blog post</h1>
+
+    <%- include('./partials/navs.ejs') %>
+
+
+    <div class="details content">
+
+       <h2><%= blog.title %> </h2>
+
+       <div class="content">
+        <p><%= blog.body %> </p>
+       </div>
+      
+      <a href="" class="delete" data-id= "<%= blog._id %>"><i class="material-symbols-outlined icon">delete</i></a>
+
+    </div>
+
+    <script>
+   const del = document.querySelector('.delete');
+
+   const endpoint = `/blogs/${del.dataset.id}`;
+
+
+  del.addEventListener("click", async () => {
+    try {
+      const request = await fetch (endpoint,{
+        method: "DELETE",
+    
+      });
+
+      const response = await request.json();
+  
+  
+      if(response) window.location.href = response.redirect;
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+  })
+
+    </script>
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

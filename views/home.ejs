@@ -1,0 +1,60 @@
+<html lang="en">
+  <%- include('./partials/header.ejs') %> 
+
+  <body>
+    <%- include('./partials/navs.ejs') %> 
+    
+<div class="blogs content">
+
+  <h1>All Blogs</h1>
+
+   <%if(blogs.length > 0 ){ %>
+    <%  blogs.forEach(blog => { %>
+
+      <a class="single"  href="/blogs/<%=blog._id %>" >
+        <!-- <img src="" alt=""> -->
+        <h3 class="title"> <%= blog.title %></h3>
+        <p class="snippet"> <%= blog.description %> </p>
+      </a>
+  
+    <%  }) %>
+   <% } else { %>
+      <p class="here-text">There are no blogs to show You can add one by going <a href="/blogs/create"> Here</a> </p>
+   <% } %>
+     
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <% for(let i = 0; i < blogs.length; i++){ %>
+
+    <% if(blogs){ %>
+
+      <h3><%= blogs[i].title %></h3>
+
+      <p><%= blogs[i].description %></p>
+
+    <% }else{ %>
+
+      <p>There are no blogs to show. You can add one by going <a href="/blogs/create">here</a></p>
+
+    <% } %>
+
+    <% } %> -->
+
+    <%- include('./partials/footer.ejs') %> 
+  </body>
+</html>
